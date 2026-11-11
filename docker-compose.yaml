@@ -12,6 +12,8 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ${BACKUP_DIR:-./care-backups}:/backups
+    security_opt:
+      - label=disable
     ports:
       - "5433:5432"
     healthcheck:
@@ -46,6 +48,8 @@ services:
       - "./care/media/minio:/data"
       - "./docker/minio/init-script.sh:/init-script.sh:ro"  # Mount the init script
       - "./docker/minio/entrypoint.sh:/entrypoint.sh:ro"  # Mount the entrypoint script
+    security_opt:
+      - label=disable
     ports:
       - "9100:9000"  # S3 API
       - "9001:9001"  # Web Console

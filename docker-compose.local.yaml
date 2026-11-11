@@ -10,6 +10,8 @@ services:
       - ./docker/.local.env
     volumes:
       - .:/app
+    security_opt:
+      - label=disable
     entrypoint: ["bash", "scripts/start-dev.sh"]
     ports:
       - "9000:9000"
@@ -21,7 +23,7 @@ services:
       redis:
         condition: service_started
       celery:
-        condition: service_healthy
+        condition: service_started
 
   celery:
     image: care_local
@@ -34,3 +36,5 @@ services:
       - redis
     volumes:
       - .:/app
+    security_opt:
+      - label=disable
