@@ -62,9 +62,7 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 
 LANGUAGES = [
     ("en-us", _("English")),
-    ("ml", _("Malayalam")),
-    ("hi", _("Hindi")),
-    ("ta", _("Tamil")),
+    ("es", _("Spanish")),
 ]
 # DATABASES
 # ------------------------------------------------------------------------------
