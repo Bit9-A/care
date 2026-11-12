@@ -28,12 +28,12 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
     password = "Ohcn@123"
 
     geo_organization = base.create_organization(
-        org_type=OrganizationTypeChoices.govt.value, name="Kerala"
+        org_type=OrganizationTypeChoices.govt.value, name="Venezuela"
     )
     base.create_organization(
         org_type=OrganizationTypeChoices.govt.value,
         parent=geo_organization.id,
-        name="Ernakulam",
+        name="Táchira",
     )
     suppliers = []
     for _ in range(3):
@@ -44,12 +44,12 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
             )
         )
     role_org_names = [
-        "Volunteer",
-        "Doctor",
-        "Staff",
-        "Nurse",
-        "Administrator",
-        "Facility Admin",
+        "Voluntario",
+        "Médico",
+        "Personal",
+        "Enfermero",
+        "Administrador general",
+        "Administrador de Establecimiento",
     ]
     role_orgs = {}
     for name in role_org_names:
@@ -61,19 +61,19 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
     facility = base.create_facility(
         geo_organization.id,
         name="FACILITY WITH PATIENTS",
-        facility_type="Private Hospital",
+        facility_type="Hospital Privado",
     )
     facility_id = facility.id
     log("Loading facility completed")
 
     existing = base.get_facility_organizations(facility_id)
     departments = {}
-    admin_org = next((o for o in existing if o.name == "Administration"), None)
+    admin_org = next((o for o in existing if o.name == "Administración"), None)
     if admin_org:
-        departments["Administration"] = admin_org
+        departments["Administración"] = admin_org
     for name in FACILITY_DEPARTMENTS:
         departments[name] = base.create_facility_organization(facility_id, name=name)
-    general_medicine = departments["General Medicine"]
+    general_medicine = departments["Medicina General"]
     log("Loading departments completed")
 
     ward = base.create_location(
@@ -101,12 +101,12 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
 
     roles = base.get_roles()
     default_users = [
-        ("Doctor", "care-doctor"),
-        ("Staff", "care-staff"),
-        ("Nurse", "care-nurse"),
-        ("Administrator", "care-admin"),
-        ("Volunteer", "care-volunteer"),
-        ("Facility Admin", "care-fac-admin"),
+        ("Médico", "care-doctor"),
+        ("Personal", "care-staff"),
+        ("Enfermero", "care-nurse"),
+        ("Administrador general", "care-admin"),
+        ("Voluntario", "care-volunteer"),
+        ("Administrador de Establecimiento", "care-fac-admin"),
     ]
     created_users = {}
     for role_name, username in default_users:
@@ -142,9 +142,9 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
         )
     log("Loading encounters completed")
 
-    admin_org = departments.get("Administration")
+    admin_org = departments.get("Administración")
     if admin_org:
-        for role_name in ("Facility Admin", "Nurse", "Staff"):
+        for role_name in ("Administrador de Establecimiento", "Enfermero", "Personal"):
             user = created_users.get(role_name)
             role = roles.get(role_name)
             if user and role:
@@ -156,7 +156,7 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
     base.create_facility(
         geo_organization.id,
         name="SECONDARY FACILITY",
-        facility_type="Private Hospital",
+        facility_type="Hospital Privado",
         is_public=True,
     )
     log("Loading secondary facility completed")
@@ -195,8 +195,8 @@ def load_fixtures(base):  # noqa: PLR0915, PLR0912
 
 
 def load_lab_definitions(base, facility_id, departments):
-    laboratory = departments["Laboratory"]
-    administration = departments.get("Administration")
+    laboratory = departments["Laboratorio"]
+    administration = departments.get("Administración")
 
     lab_location = base.create_location(
         facility_id,
@@ -238,7 +238,7 @@ def load_lab_definitions(base, facility_id, departments):
 
 
 def load_inventory(base, facility_id, departments, suppliers, transfer_destination):
-    pharmacy = departments["Pharmacy"]
+    pharmacy = departments["Farmacia"]
 
     pharmacy_location = base.create_location(
         facility_id,
@@ -365,7 +365,7 @@ def setup_managing_organization(base, role_orgs, geo_id, password):
     role_org_roles = base.get_role_org_roles()
 
     managing_org = base.create_organization(
-        org_type=OrganizationTypeChoices.role.value, name="Health Department"
+        org_type=OrganizationTypeChoices.role.value, name="Departamento de Salud"
     )
     managing_org_id = managing_org.id
 
@@ -395,12 +395,12 @@ def load_scheduling(base, facility_id, created_users, patients, departments, rol
     valid_from = (now + timedelta(days=1)).strftime("%Y-%m-%dT00:00:00")
     valid_to = (now + timedelta(days=8)).strftime("%Y-%m-%dT23:59:59")
 
-    doctor = created_users.get("Doctor")
+    doctor = created_users.get("Médico")
     if not doctor:
         return
 
-    admin_org = departments.get("Administration")
-    doctor_role = roles.get("Doctor")
+    admin_org = departments.get("Administración")
+    doctor_role = roles.get("Médico")
     if admin_org and doctor_role:
         base.add_user_to_facility_organization(
             facility_id, admin_org.id, doctor.id, doctor_role.id

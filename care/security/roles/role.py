@@ -20,59 +20,59 @@ class Role:
 
 
 VOLUNTEER_ROLE = Role(
-    name="Volunteer",
-    description="Volunteer at some facility",
+    name="Voluntario",
+    description="Voluntario en un establecimiento",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 DOCTOR_ROLE = Role(
-    name="Doctor",
-    description="Doctor at some facility",
+    name="Médico",
+    description="Médico en un establecimiento",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 NURSE_ROLE = Role(
-    name="Nurse",
-    description="Nurse at some facility",
+    name="Enfermero",
+    description="Enfermero en un establecimiento",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 STAFF_ROLE = Role(
-    name="Staff",
-    description="Staff at some facility",
+    name="Personal",
+    description="Personal de un establecimiento",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 PHARMACIST_ROLE = Role(
-    name="Pharmacist",
-    description="Pharmacist at some facility",
+    name="Farmacéutico",
+    description="Farmacéutico en un establecimiento",
     contexts=[RoleContext.FACILITY],
 )
 ADMINISTRATOR = Role(
-    name="Administrator",
-    description="Administrator at a given boundary",
+    name="Administrador general",
+    description="Administrador de un ámbito determinado",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 FACILITY_ADMIN_ROLE = Role(
-    name="Facility Admin",
-    description="Administrator of a facility, associated to the person creating the facility.",
+    name="Administrador de Establecimiento",
+    description="Administrador de un establecimiento, asociado a la persona que lo crea.",
     contexts=[RoleContext.FACILITY],
 )
 ADMIN_ROLE = Role(
-    name="Admin",
-    description="Admin",
+    name="Administrador",
+    description="Administrador",
     contexts=[RoleContext.FACILITY, RoleContext.GOVT_ORG],
 )
 
 ROLE_ORGANIZATION_ADMIN_ROLE = Role(
-    name="Admin",
-    description="Administrator of a role organization",
+    name="Administrador",
+    description="Administrador de una organización de responsabilidad",
     contexts=[RoleContext.ROLE_ORG],
 )
 ROLE_ORGANIZATION_MANAGER_ROLE = Role(
-    name="Manager",
-    description="Manager of a role organization",
+    name="Gestor",
+    description="Gestor de una organización de responsabilidad",
     contexts=[RoleContext.ROLE_ORG],
 )
 ROLE_ORGANIZATION_MEMBER_ROLE = Role(
-    name="Member",
-    description="Member of a role organization",
+    name="Miembro",
+    description="Miembro de una organización de responsabilidad",
     contexts=[RoleContext.ROLE_ORG],
 )
 
