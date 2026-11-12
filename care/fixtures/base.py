@@ -65,9 +65,11 @@ def to_attr_dict(obj):
 
 
 def generate_phone_number():
-    prefix = secrets.choice(["6", "7", "8", "9"])
-    suffix = "".join(secrets.choice(string.digits) for _ in range(9))
-    return f"+91{prefix}{suffix}"
+    # Venezuelan numbers: +58 followed by a 3-digit area code and 7 digits.
+    # 4xx are the mobile prefixes assigned by CANTV.
+    prefix = secrets.choice(["412", "414", "416", "422", "424", "426"])
+    suffix = "".join(secrets.choice(string.digits) for _ in range(7))
+    return f"+58{prefix}{suffix}"
 
 
 def slugify(text, max_length=36):
