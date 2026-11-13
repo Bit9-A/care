@@ -18,19 +18,19 @@ from care.security.roles.role import (
 
 class QuestionnairePermissions(enum.Enum):
     can_write_questionnaire = Permission(
-        "Can Create/Update Questionnaires",
+        "Crear o actualizar cuestionarios",
         "",
         PermissionContext.QUESTIONNAIRE,
         [ADMIN_ROLE, FACILITY_ADMIN_ROLE],
     )
     can_archive_questionnaire = Permission(
-        "Can Archive Questionnaires",
+        "Archivar cuestionarios",
         "",
         PermissionContext.QUESTIONNAIRE,
         [ADMIN_ROLE, FACILITY_ADMIN_ROLE],
     )
     can_read_questionnaire = Permission(
-        "Can Read Questionnaires",
+        "Ver cuestionarios",
         "",
         PermissionContext.QUESTIONNAIRE,
         [
@@ -48,7 +48,7 @@ class QuestionnairePermissions(enum.Enum):
         ],
     )
     can_submit_questionnaire = Permission(
-        "Can Submit Questionnaires",
+        "Enviar cuestionarios",
         "",
         PermissionContext.QUESTIONNAIRE,
         [
@@ -65,8 +65,8 @@ class QuestionnairePermissions(enum.Enum):
         ],
     )
     can_manage_questionnaire = Permission(
-        "Can Manage Questionnaires",
-        "Allows users to add or remove organizations from questionnaires, ie control Access Management",
+        "Gestionar cuestionarios",
+        "Permite a los usuarios agregar o quitar organizaciones de los cuestionarios, es decir, controlar la gestión de acceso",
         PermissionContext.QUESTIONNAIRE,
         [ADMIN_ROLE, FACILITY_ADMIN_ROLE, ROLE_ORGANIZATION_ADMIN_ROLE],
     )

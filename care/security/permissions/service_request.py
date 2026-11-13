@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ServiceRequestPermissions(enum.Enum):
     can_write_service_request = Permission(
-        "Can Write Service Request on Facility",
+        "Crear o actualizar solicitud de servicio en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_read_service_request = Permission(
-        "Can Read Service Request",
+        "Ver solicitud de servicio",
         "",
         PermissionContext.FACILITY,
         [

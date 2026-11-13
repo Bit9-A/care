@@ -18,7 +18,7 @@ from care.security.roles.role import (
 
 class OrganizationPermissions(enum.Enum):
     can_view_organization = Permission(
-        "Can View Organizations",
+        "Ver organizaciones",
         "",
         PermissionContext.ORGANIZATION,
         [
@@ -36,37 +36,37 @@ class OrganizationPermissions(enum.Enum):
         ],
     )
     can_create_organization = Permission(
-        "Can Create Organizations",
+        "Crear organizaciones",
         "",
         PermissionContext.ORGANIZATION,
         [ADMIN_ROLE],
     )
     can_delete_organization = Permission(
-        "Can Delete Organizations",
+        "Eliminar organizaciones",
         "",
         PermissionContext.ORGANIZATION,
         [ADMIN_ROLE],
     )
     can_manage_organization = Permission(
-        "Can Manage Organizations",
-        "This includes changing names, descriptions, metadata, etc..",
+        "Gestionar organizaciones",
+        "Esto incluye cambiar nombres, descripciones, metadatos, etc.",
         PermissionContext.ORGANIZATION,
         [ADMIN_ROLE, ROLE_ORGANIZATION_ADMIN_ROLE],
     )
     can_manage_organization_users = Permission(
-        "Can Manage Users in an Organization",
-        "Add, remove, and assign roles to users in an organization",
+        "Gestionar usuarios de una organización",
+        "Agregar, quitar y asignar roles a usuarios en una organización",
         PermissionContext.ORGANIZATION,
         [ADMIN_ROLE, ADMINISTRATOR, FACILITY_ADMIN_ROLE, ROLE_ORGANIZATION_ADMIN_ROLE],
     )
     can_manage_connected_role_organizations = Permission(
-        "Can Manage Connected Role Organizations",
-        "Add, remove, and assign roles to users in connected role organizations",
+        "Gestionar organizaciones de roles conectadas",
+        "Agregar, quitar y asignar roles a usuarios en organizaciones de roles conectadas",
         PermissionContext.ORGANIZATION,
         [ROLE_ORGANIZATION_ADMIN_ROLE, ROLE_ORGANIZATION_MANAGER_ROLE],
     )
     can_list_organization_users = Permission(
-        "Can List Users in an Organizations",
+        "Listar usuarios de una organización",
         "",
         PermissionContext.ORGANIZATION,
         [
@@ -83,8 +83,8 @@ class OrganizationPermissions(enum.Enum):
         ],
     )
     is_geo_admin = Permission(
-        "Is Geo Admin",
-        "Geo Admins can manage facilities in their organization",
+        "Administrador geográfico",
+        "Los administradores geográficos pueden gestionar establecimientos en su organización",
         PermissionContext.ORGANIZATION,
         [],
     )

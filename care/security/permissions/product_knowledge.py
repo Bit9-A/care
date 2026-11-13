@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ProductKnowledgePermissions(enum.Enum):
     can_write_product_knowledge = Permission(
-        "Can Create Product Knowledge on Facility",
+        "Crear conocimiento de producto en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_product_knowledge = Permission(
-        "Can Read Product Knowledge",
+        "Ver conocimiento de producto",
         "",
         PermissionContext.FACILITY,
         [

@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class TemplatePermissions(enum.Enum):
     can_write_template = Permission(
-        "Can Create Template on Facility",
+        "Crear plantilla en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_read_template = Permission(
-        "Can Read Template",
+        "Ver plantilla",
         "",
         PermissionContext.FACILITY,
         [
@@ -36,19 +36,19 @@ class TemplatePermissions(enum.Enum):
         ],
     )
     can_preview_template = Permission(
-        "Can Preview Template",
+        "Previsualizar plantilla",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_view_template_schema = Permission(
-        "Can View Template Schema",
+        "Ver esquema de plantilla",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_generate_report_from_template = Permission(
-        "Can generate report from template",
+        "Generar informe a partir de plantilla",
         "",
         PermissionContext.FACILITY,
         [
@@ -64,7 +64,7 @@ class TemplatePermissions(enum.Enum):
     )
 
     can_generate_report_for_completed_encounter = Permission(
-        "Can generate report for completed encounter",
+        "Generar informe para episodio clínico completado",
         "",
         PermissionContext.FACILITY,
         [

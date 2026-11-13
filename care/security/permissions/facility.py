@@ -14,14 +14,14 @@ from care.security.roles.role import (
 
 class FacilityPermissions(enum.Enum):
     can_create_facility = Permission(
-        "Can Create on Facility",
-        "Something Here",
+        "Crear en el establecimiento",
+        "Algo aquí",
         PermissionContext.FACILITY,
         [ADMINISTRATOR, ADMIN_ROLE, FACILITY_ADMIN_ROLE],
     )
     can_read_facility = Permission(
-        "Can Read on Facility",
-        "Something Here",
+        "Ver en el establecimiento",
+        "Algo aquí",
         PermissionContext.FACILITY,
         [
             FACILITY_ADMIN_ROLE,
@@ -34,8 +34,8 @@ class FacilityPermissions(enum.Enum):
         ],
     )
     can_update_facility = Permission(
-        "Can Update on Facility",
-        "Something Here",
+        "Actualizar en el establecimiento",
+        "Algo aquí",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMINISTRATOR, ADMIN_ROLE, STAFF_ROLE],
     )

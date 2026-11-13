@@ -15,7 +15,7 @@ from care.security.roles.role import (
 
 class PatientPermissions(enum.Enum):
     can_create_patient = Permission(
-        "Can Create Patient",
+        "Crear paciente",
         "",
         PermissionContext.PATIENT,
         [
@@ -28,7 +28,7 @@ class PatientPermissions(enum.Enum):
         ],
     )
     can_write_patient = Permission(
-        "Can Update a Patient's data",
+        "Actualizar datos del paciente",
         "",
         PermissionContext.PATIENT,
         [
@@ -41,7 +41,7 @@ class PatientPermissions(enum.Enum):
         ],
     )
     can_list_patients = Permission(
-        "Can list patients",
+        "Listar pacientes",
         "",
         PermissionContext.PATIENT,
         [
@@ -56,13 +56,13 @@ class PatientPermissions(enum.Enum):
         ],
     )
     can_view_clinical_data = Permission(
-        "Can view clinical data about patients",
+        "Ver datos clínicos de pacientes",
         "",
         PermissionContext.PATIENT,
         [STAFF_ROLE, DOCTOR_ROLE, NURSE_ROLE, ADMIN_ROLE, FACILITY_ADMIN_ROLE],
     )  # To be split into finer grain permissions
     can_view_questionnaire_responses = Permission(
-        "Can view questionnaire responses on patient",
+        "Ver respuestas de cuestionario del paciente",
         "",
         PermissionContext.PATIENT,
         [
@@ -77,7 +77,7 @@ class PatientPermissions(enum.Enum):
         ],
     )
     can_submit_patient_questionnaire = Permission(
-        "Can submit questionnaire about patients",
+        "Enviar cuestionario sobre pacientes",
         "",
         PermissionContext.PATIENT,
         [

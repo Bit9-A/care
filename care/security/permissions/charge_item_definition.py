@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ChargeItemDefinitionPermissions(enum.Enum):
     can_write_charge_item_definition = Permission(
-        "Can Create Charge Item Definition on Facility",
+        "Crear definición de cargo en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_charge_item_definition = Permission(
-        "Can Read Charge Item Definition",
+        "Ver definición de cargo",
         "",
         PermissionContext.FACILITY,
         [
@@ -36,7 +36,7 @@ class ChargeItemDefinitionPermissions(enum.Enum):
         ],
     )
     can_set_charge_item_definition = Permission(
-        "Can Set Charge Item Definition on Facility",
+        "Establecer definición de cargo en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],

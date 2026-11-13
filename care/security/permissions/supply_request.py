@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class SupplyRequestPermissions(enum.Enum):
     can_write_supply_request = Permission(
-        "Can Create Supply Request on Facility",
+        "Crear solicitud de suministros en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, STAFF_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_read_supply_request = Permission(
-        "Can Read Supply Request",
+        "Ver solicitud de suministros",
         "",
         PermissionContext.FACILITY,
         [

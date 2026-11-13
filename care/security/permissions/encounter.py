@@ -31,43 +31,43 @@ CLINICAL_DATA_ACCESS_ROLES = [
 
 class EncounterPermissions(enum.Enum):
     can_create_encounter = Permission(
-        "Can Create encounter",
+        "Crear episodio clínico",
         "",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_list_encounter = Permission(
-        "Can list encounters",
-        "Clinical data is not associated with this permission",
+        "Listar episodios clínicos",
+        "Los datos clínicos no están asociados con este permiso",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_write_encounter = Permission(
-        "Update Encounter non clinical",
+        "Actualizar datos no clínicos del episodio clínico",
         "",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_write_encounter_clinical_data = Permission(
-        "Update Encounter related clinical data",
+        "Actualizar datos clínicos relacionados con el episodio clínico",
         "",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_read_encounter = Permission(
-        "Can Read encounter",
+        "Ver episodio clínico",
         "",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_read_encounter_clinical_data = Permission(
-        "Can Read encounter related clinical data",
+        "Ver datos clínicos relacionados con el episodio clínico",
         "",
         PermissionContext.ENCOUNTER,
         CLINICAL_DATA_ACCESS_ROLES,
     )
     can_submit_encounter_questionnaire = Permission(
-        "Can submit questionnaire about patient encounters",
+        "Enviar cuestionario sobre episodios clínicos del paciente",
         "",
         PermissionContext.PATIENT,
         [

@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ChargeItemPermissions(enum.Enum):
     can_create_negative_charge_item = Permission(
-        "Can Create Negative Charge Item",
+        "Crear cargo negativo",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_create_charge_item = Permission(
-        "Can Create Charge Item",
+        "Crear cargo",
         "",
         PermissionContext.FACILITY,
         [
@@ -34,13 +34,13 @@ class ChargeItemPermissions(enum.Enum):
         ],
     )
     can_update_charge_item = Permission(
-        "Can Update Charge Item",
+        "Actualizar cargo",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_charge_item = Permission(
-        "Can Read Charge Item",
+        "Ver cargo",
         "",
         PermissionContext.FACILITY,
         [
@@ -55,7 +55,7 @@ class ChargeItemPermissions(enum.Enum):
         ],
     )
     can_cancel_charge_item = Permission(
-        "Can Cancel Charge Item",
+        "Cancelar cargo",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],

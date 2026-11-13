@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class TagConfigPermissions(enum.Enum):
     can_write_tag_config = Permission(
-        "Can Create Tag Config on Facility",
+        "Crear configuración de etiquetas en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_apply_tag_config = Permission(
-        "Can Apply Tag Config to Resources",
+        "Aplicar configuración de etiquetas a recursos",
         "",
         PermissionContext.FACILITY,
         [
@@ -34,7 +34,7 @@ class TagConfigPermissions(enum.Enum):
         ],
     )
     can_read_tag_config = Permission(
-        "Can Read Tag Config",
+        "Ver configuración de etiquetas",
         "",
         PermissionContext.FACILITY,
         [

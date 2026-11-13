@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class PatientIdentifierConfigPermissions(enum.Enum):
     can_write_patient_identifier_config = Permission(
-        "Can Create Patient Identifier Config on Facility",
+        "Crear configuración de identificadores de pacientes en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_patient_identifier_config = Permission(
-        "Can Read Patient Identifier Config",
+        "Ver configuración de identificadores de pacientes",
         "",
         PermissionContext.FACILITY,
         [

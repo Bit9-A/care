@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class UserPermissions(enum.Enum):
     can_create_user = Permission(
-        "Can create User in care",
+        "Crear usuario en Care",
         "",
         PermissionContext.FACILITY,
         [ADMIN_ROLE, FACILITY_ADMIN_ROLE, ADMINISTRATOR],
     )
     can_list_user = Permission(
-        "Can list Users in Care",
+        "Listar usuarios en Care",
         "",
         PermissionContext.FACILITY,
         [

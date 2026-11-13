@@ -14,13 +14,13 @@ from care.security.roles.role import (
 
 class ActivityDefinitionPermissions(enum.Enum):
     can_write_activity_definition = Permission(
-        "Can Create Activity Definition on Facility",
+        "Crear definición de actividad en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_activity_definition = Permission(
-        "Can Read Activity Definition",
+        "Ver definición de actividad",
         "",
         PermissionContext.FACILITY,
         [

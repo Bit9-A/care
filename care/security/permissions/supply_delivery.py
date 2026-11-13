@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class SupplyDeliveryPermissions(enum.Enum):
     can_write_supply_delivery = Permission(
-        "Can Create Supply Delivery on Facility",
+        "Crear entrega de suministros en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_supply_delivery = Permission(
-        "Can Read Supply Delivery",
+        "Ver entrega de suministros",
         "",
         PermissionContext.FACILITY,
         [
@@ -36,7 +36,7 @@ class SupplyDeliveryPermissions(enum.Enum):
         ],
     )
     can_write_external_supply_delivery = Permission(
-        "Can Create External Supply Delivery on Facility",
+        "Crear entrega de suministros externa en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],

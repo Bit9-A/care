@@ -6,7 +6,7 @@ from care.security.roles.role import ADMIN_ROLE, ADMINISTRATOR, FACILITY_ADMIN_R
 
 class ServiceAccountPermissions(enum.Enum):
     can_create_service_account = Permission(
-        "Can create service account in care",
+        "Crear cuenta de servicio en Care",
         "",
         PermissionContext.FACILITY,
         [ADMIN_ROLE, FACILITY_ADMIN_ROLE, ADMINISTRATOR],

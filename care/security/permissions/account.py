@@ -15,19 +15,19 @@ from care.security.roles.role import (
 
 class AccountPermissions(enum.Enum):
     can_create_account = Permission(
-        "Can Create Account",
+        "Crear cuenta",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_update_account = Permission(
-        "Can Update Account",
+        "Actualizar cuenta",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_account = Permission(
-        "Can Read Account",
+        "Ver cuenta",
         "",
         PermissionContext.FACILITY,
         [

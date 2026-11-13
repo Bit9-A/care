@@ -14,13 +14,13 @@ from care.security.roles.role import (
 
 class SpecimenPermissions(enum.Enum):
     can_write_specimen = Permission(
-        "Can Create Specimen on Facility",
+        "Crear espécimen en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_read_specimen = Permission(
-        "Can Read Specimen",
+        "Ver espécimen",
         "",
         PermissionContext.FACILITY,
         [

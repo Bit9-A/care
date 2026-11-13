@@ -15,7 +15,7 @@ from care.security.roles.role import (
 
 class InvoicePermissions(enum.Enum):
     can_write_invoice = Permission(
-        "Can Write Invoice",
+        "Crear o actualizar factura",
         "",
         PermissionContext.FACILITY,
         [
@@ -28,7 +28,7 @@ class InvoicePermissions(enum.Enum):
         ],
     )
     can_read_invoice = Permission(
-        "Can Read Invoice",
+        "Ver factura",
         "",
         PermissionContext.FACILITY,
         [
@@ -43,13 +43,13 @@ class InvoicePermissions(enum.Enum):
         ],
     )
     can_destroy_invoice = Permission(
-        "Can Destroy Invoice",
+        "Eliminar factura",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_manage_locked_invoice = Permission(
-        "Can Manage Locked Invoice",
+        "Gestionar factura bloqueada",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],

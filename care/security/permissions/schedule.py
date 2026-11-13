@@ -13,13 +13,13 @@ from care.security.roles.role import (
 
 class SchedulePermissions(enum.Enum):
     can_write_schedule = Permission(
-        "Can Create on Schedule",
+        "Crear en la programación",
         "",
         PermissionContext.FACILITY,
         [ADMIN_ROLE, STAFF_ROLE, FACILITY_ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_list_schedule = Permission(
-        "Can list schedule on Object",
+        "Listar programación del objeto",
         "",
         PermissionContext.FACILITY,
         [
@@ -32,7 +32,7 @@ class SchedulePermissions(enum.Enum):
         ],
     )
     can_list_booking = Permission(
-        "Can list bookings on Object",
+        "Listar reservas del objeto",
         "",
         PermissionContext.FACILITY,
         [
@@ -45,7 +45,7 @@ class SchedulePermissions(enum.Enum):
         ],
     )
     can_write_booking = Permission(
-        "Can update bookings on Object",
+        "Actualizar reservas del objeto",
         "",
         PermissionContext.FACILITY,
         [
@@ -57,7 +57,7 @@ class SchedulePermissions(enum.Enum):
         ],
     )
     can_reschedule_booking = Permission(
-        "Can reschedule bookings on Object",
+        "Reprogramar reservas del objeto",
         "",
         PermissionContext.FACILITY,
         [

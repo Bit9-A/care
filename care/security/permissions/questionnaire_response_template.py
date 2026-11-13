@@ -15,7 +15,7 @@ from care.security.roles.role import (
 
 class QuestionnaireResponseTemplatePermissions(enum.Enum):
     can_write_questionnaire_response_template = Permission(
-        "Can Create/Update Questionnaire Response Templates",
+        "Crear o actualizar plantillas de respuestas de cuestionario",
         "",
         PermissionContext.QUESTIONNAIRE,
         [
@@ -30,7 +30,7 @@ class QuestionnaireResponseTemplatePermissions(enum.Enum):
         ],
     )
     can_read_questionnaire_response_template = Permission(
-        "Can Read Questionnaire Response Templates",
+        "Ver plantillas de respuestas de cuestionario",
         "",
         PermissionContext.QUESTIONNAIRE,
         [

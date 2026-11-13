@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class SpecimenDefinitionPermissions(enum.Enum):
     can_write_specimen_definition = Permission(
-        "Can Create Specimen Definition on Facility",
+        "Crear definición de espécimen en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_specimen_definition = Permission(
-        "Can Read Specimen Definition",
+        "Ver definición de espécimen",
         "",
         PermissionContext.FACILITY,
         [

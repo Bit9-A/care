@@ -13,13 +13,13 @@ from care.security.roles.role import (
 
 class TokenPermissions(enum.Enum):
     can_write_token_category = Permission(
-        "Can Create on Token Category",
+        "Crear en la categoría de tokens",
         "",
         PermissionContext.FACILITY,
         [ADMIN_ROLE, STAFF_ROLE, FACILITY_ADMIN_ROLE],
     )
     can_list_token_category = Permission(
-        "Can list token category on Facility",
+        "Listar categorías de tokens del establecimiento",
         "",
         PermissionContext.FACILITY,
         [
@@ -32,7 +32,7 @@ class TokenPermissions(enum.Enum):
         ],
     )
     can_write_token = Permission(
-        "Can Create on Token",
+        "Crear token",
         "",
         PermissionContext.FACILITY,
         [
@@ -45,7 +45,7 @@ class TokenPermissions(enum.Enum):
         ],
     )
     can_list_token = Permission(
-        "Can list token on Object",
+        "Listar tokens del objeto",
         "",
         PermissionContext.FACILITY,
         [

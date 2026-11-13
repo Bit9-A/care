@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ObservationDefinitionPermissions(enum.Enum):
     can_write_observation_definition = Permission(
-        "Can Create Observation Definition on Facility",
+        "Crear definición de observación en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_observation_definition = Permission(
-        "Can Read Observation Definition",
+        "Ver definición de observación",
         "",
         PermissionContext.FACILITY,
         [

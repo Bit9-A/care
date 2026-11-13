@@ -13,7 +13,7 @@ from care.security.roles.role import (
 
 class DevicePermissions(enum.Enum):
     can_list_devices = Permission(
-        "Can List Devices on Facility",
+        "Listar dispositivos del establecimiento",
         "",
         PermissionContext.FACILITY,
         [
@@ -26,13 +26,13 @@ class DevicePermissions(enum.Enum):
         ],
     )
     can_manage_device_associations_to_encounters = Permission(
-        "Can Manage Device Associations to Encounters",
+        "Gestionar asociaciones de dispositivos con episodios clínicos",
         "",
         PermissionContext.FACILITY,
         [STAFF_ROLE, ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE, FACILITY_ADMIN_ROLE],
     )
     can_manage_devices = Permission(
-        "Can Manage Devices on Facility",
+        "Gestionar dispositivos del establecimiento",
         "",
         PermissionContext.FACILITY,
         [STAFF_ROLE, ADMIN_ROLE, FACILITY_ADMIN_ROLE, PHARMACIST_ROLE],

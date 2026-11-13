@@ -14,19 +14,19 @@ from care.security.roles.role import (
 
 class FacilityOrganizationPermissions(enum.Enum):
     can_create_facility_organization = Permission(
-        "Can Create Facility Organizations",
+        "Crear organizaciones del establecimiento",
         "",
         PermissionContext.FACILITY_ORGANIZATION,
         [FACILITY_ADMIN_ROLE],
     )
     can_create_facility_organization_root = Permission(
-        "Can Create Facility Organizations Root",
+        "Crear raíz de organizaciones del establecimiento",
         "",
         PermissionContext.FACILITY_ORGANIZATION,
         [FACILITY_ADMIN_ROLE],
     )
     can_view_facility_organization = Permission(
-        "Can View Facility Organizations",
+        "Ver organizaciones del establecimiento",
         "",
         PermissionContext.FACILITY_ORGANIZATION,
         [
@@ -40,19 +40,19 @@ class FacilityOrganizationPermissions(enum.Enum):
         ],
     )
     can_delete_facility_organization = Permission(
-        "Can Delete Facility Organizations",
+        "Eliminar organizaciones del establecimiento",
         "",
         PermissionContext.FACILITY_ORGANIZATION,
         [FACILITY_ADMIN_ROLE],
     )
     can_manage_facility_organization = Permission(
-        "Can Manage Facility Organizations",
-        "This includes changing names, descriptions, metadata, etc..",
+        "Gestionar organizaciones del establecimiento",
+        "Esto incluye cambiar nombres, descripciones, metadatos, etc.",
         PermissionContext.FACILITY_ORGANIZATION,
         [FACILITY_ADMIN_ROLE, ADMINISTRATOR],
     )
     can_list_facility_organization_users = Permission(
-        "Can List Users in a Facility Organizations",
+        "Listar usuarios de organizaciones del establecimiento",
         "",
         PermissionContext.FACILITY_ORGANIZATION,
         [
@@ -65,8 +65,8 @@ class FacilityOrganizationPermissions(enum.Enum):
         ],
     )
     can_manage_facility_organization_users = Permission(
-        "Can Manage Users in a Facility Organization",
-        "Add, remove, and assign roles to users in a facility organization",
+        "Gestionar usuarios de una organización del establecimiento",
+        "Agregar, quitar y asignar roles a usuarios en una organización del establecimiento",
         PermissionContext.FACILITY_ORGANIZATION,
         [FACILITY_ADMIN_ROLE, ADMINISTRATOR],
     )

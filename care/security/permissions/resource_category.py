@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class ResourceCategoryPermissions(enum.Enum):
     can_write_resource_category = Permission(
-        "Can Create Resource Category on Facility",
+        "Crear categoría de recursos en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_resource_category = Permission(
-        "Can Read Resource Category",
+        "Ver categoría de recursos",
         "",
         PermissionContext.FACILITY,
         [

@@ -14,13 +14,13 @@ from care.security.roles.role import (
 
 class DiagnosticReportPermissions(enum.Enum):
     can_write_diagnostic_report = Permission(
-        "Can Create Diagnostic Report on Facility",
+        "Crear informe de diagnóstico en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, DOCTOR_ROLE, NURSE_ROLE],
     )
     can_read_diagnostic_report = Permission(
-        "Can Read Diagnostic Report",
+        "Ver informe de diagnóstico",
         "",
         PermissionContext.FACILITY,
         [

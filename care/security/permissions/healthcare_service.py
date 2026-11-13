@@ -15,13 +15,13 @@ from care.security.roles.role import (
 
 class HealthcareServicePermissions(enum.Enum):
     can_write_healthcare_service = Permission(
-        "Can Create Healthcare Service on Facility",
+        "Crear servicio de atención médica en el establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],
     )
     can_read_healthcare_service = Permission(
-        "Can Read Healthcare Service",
+        "Ver servicio de atención médica",
         "",
         PermissionContext.FACILITY,
         [

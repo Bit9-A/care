@@ -14,7 +14,7 @@ from care.security.roles.role import (
 
 class FacilityLocationPermissions(enum.Enum):
     can_list_facility_locations = Permission(
-        "Can List Facility Locations",
+        "Listar ubicaciones del establecimiento",
         "",
         PermissionContext.FACILITY,
         [
@@ -28,19 +28,19 @@ class FacilityLocationPermissions(enum.Enum):
         ],
     )
     can_write_facility_locations = Permission(
-        "Can Create/Update Facility Locations",
+        "Crear o actualizar ubicaciones del establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, STAFF_ROLE],
     )
     can_list_facility_location_organizations = Permission(
-        "Can List Facility Location Organizations",
+        "Listar organizaciones de ubicaciones del establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, STAFF_ROLE],
     )
     can_create_facility_location_organizations = Permission(
-        "Can Create/Update Facility Location Organizations",
+        "Crear o actualizar organizaciones de ubicaciones del establecimiento",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE, STAFF_ROLE],

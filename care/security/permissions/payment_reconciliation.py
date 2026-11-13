@@ -15,7 +15,7 @@ from care.security.roles.role import (
 
 class PaymentReconciliationPermissions(enum.Enum):
     can_write_payment_reconciliation = Permission(
-        "Can Write Payment Reconciliation",
+        "Crear o actualizar conciliación de pagos",
         "",
         PermissionContext.FACILITY,
         [
@@ -28,7 +28,7 @@ class PaymentReconciliationPermissions(enum.Enum):
         ],
     )
     can_read_payment_reconciliation = Permission(
-        "Can Read Payment Reconciliation",
+        "Ver conciliación de pagos",
         "",
         PermissionContext.FACILITY,
         [
@@ -43,7 +43,7 @@ class PaymentReconciliationPermissions(enum.Enum):
         ],
     )
     can_destroy_payment_reconciliation = Permission(
-        "Can Destroy Payment Reconciliation",
+        "Eliminar conciliación de pagos",
         "",
         PermissionContext.FACILITY,
         [FACILITY_ADMIN_ROLE, ADMIN_ROLE],

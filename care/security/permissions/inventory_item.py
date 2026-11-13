@@ -15,7 +15,7 @@ from care.security.roles.role import (
 
 class InventoryItemPermissions(enum.Enum):
     can_read_inventory_item = Permission(
-        "Can Read Inventory Item",
+        "Ver artículo de inventario",
         "",
         PermissionContext.FACILITY,
         [
