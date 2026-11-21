@@ -15,7 +15,7 @@ services:
     security_opt:
       - label=disable
     ports:
-      - "5433:5432"
+      - "5434:5432"
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-postgres}"]
       interval: 10s
