@@ -7,6 +7,7 @@ from django_redis import get_redis_connection
 from care.emr.fhir.resources.valueset import ValueSetResource
 from care.emr.models import EMRBaseModel
 from care.emr.resources.common.valueset import ValueSetCompose
+from care.emr.terminologies import is_local_system, lookup_local, search_local
 
 
 class ValueSet(EMRBaseModel):
@@ -27,7 +28,7 @@ class ValueSet(EMRBaseModel):
             if system not in systems:
                 systems[system] = {"include": []}
             systems[system]["include"].append(include.model_dump(exclude_defaults=True))
-        for exclude in compose.exclude:
+        for exclude in compose.exclude or []:
             system = exclude.system
             if system not in systems:
                 systems[system] = {"exclude": []}
@@ -40,6 +41,9 @@ class ValueSet(EMRBaseModel):
         systems = self.create_composition()
         results = []
         for system in systems:
+            if is_local_system(system):
+                results.extend(search_local(system, search=search, count=count))
+                continue
             temp = ValueSetResource().filter(
                 search=search, count=count, **systems[system]
             )
@@ -50,8 +54,12 @@ class ValueSet(EMRBaseModel):
 
     def lookup(self, code):
         systems = self.create_composition()
+        if is_local_system(getattr(code, "system", None)):
+            return code.system in systems and lookup_local(code.system, code.code)
         results = []
         for system in systems:
+            if is_local_system(system):
+                continue
             results.append(ValueSetResource().filter(**systems[system]).lookup(code))
         return any(results)
 

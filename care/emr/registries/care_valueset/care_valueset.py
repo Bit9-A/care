@@ -1,6 +1,7 @@
 from care.emr.fhir.resources.valueset import ValueSetResource
 from care.emr.models.valueset import ValueSet as ValuesetDatabaseModel
 from care.emr.resources.common.valueset import ValueSet, ValueSetCompose
+from care.emr.terminologies import is_local_system, search_local
 
 
 class CareValueset:
@@ -52,7 +53,7 @@ class CareValueset:
             if system not in systems:
                 systems[system] = {"include": []}
             systems[system]["include"].append(include.model_dump(exclude_defaults=True))
-        for exclude in self.composition.exclude:
+        for exclude in self.composition.exclude or []:
             system = exclude.system
             if system not in systems:
                 systems[system] = {"exclude": []}
@@ -68,6 +69,9 @@ class CareValueset:
         results = []
 
         for system in systems:
+            if is_local_system(system):
+                results.extend(search_local(system, search=filter, count=10))
+                continue
             results.extend(
                 ValueSetResource()
                 .filter(search=filter, count=10, **systems[system])
