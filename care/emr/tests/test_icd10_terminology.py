@@ -5,8 +5,41 @@ from model_bakery import baker
 from care.emr.models import ValueSet
 from care.emr.models.icd10 import ICD10Code
 from care.emr.resources.common.coding import Coding
-from care.emr.terminologies import ICD10_SYSTEM
+from care.emr.terminologies import ICD10_SYSTEM, fix_display
 from care.utils.tests.base import CareAPITestBase
+
+
+class TestIcd10AccentCorrection(CareAPITestBase):
+    """Upstream CIE-10 displays lost their accents; only safe fixes apply."""
+
+    def test_restores_missing_accents(self):
+        self.assertEqual(
+            fix_display("Hipertension esencial (primaria)"),
+            "Hipertensión esencial (primaria)",
+        )
+        self.assertEqual(
+            fix_display("Colera debido a vibrio cholerae"), "Cólera debido a vibrio cholerae"
+        )
+
+    def test_keeps_capitalisation_of_the_first_word(self):
+        self.assertEqual(fix_display("Infeccion intestinal"), "Infección intestinal")
+
+    def test_never_rewrites_dangerous_homographs(self):
+        # "ano" is anus (not "año"), "mano" is a hand, "hace" is a verb form.
+        self.assertEqual(fix_display("ano mano hace"), "ano mano hace")
+
+    def test_rewrites_words_that_are_only_verbs_outside_a_diagnosis(self):
+        # "calculo" and "ulcera" are verb forms, but as diagnosis titles they
+        # are always the accented noun.
+        self.assertEqual(fix_display("calculo biliar"), "cálculo biliar")
+        self.assertEqual(fix_display("Ulcera gastrica"), "Úlcera gástrica")
+
+    def test_never_rewrites_eponyms_or_acronyms(self):
+        self.assertEqual(
+            fix_display("Tumor maligno de la ampolla de vater"),
+            "Tumor maligno de la ampolla de vater",
+        )
+        self.assertEqual(fix_display("CIE-10 y VIH"), "CIE-10 y VIH")
 
 
 class TestIcd10Terminology(CareAPITestBase):

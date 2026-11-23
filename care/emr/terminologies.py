@@ -5,6 +5,11 @@ needs a complete Spanish catalog (currently CIE-10) is stored in Postgres and
 queried here. Valuesets can mix remote and local systems transparently.
 """
 
+import json
+import os
+import re
+from functools import lru_cache
+
 from django.db.models import Case, IntegerField, Q, Value, When
 from django.db.models.functions import Length
 
@@ -13,6 +18,41 @@ from care.emr.fhir.resources.code_concept import MinimalCodeConcept
 ICD10_SYSTEM = "http://hl7.org/fhir/sid/icd-10"
 
 LOCAL_SYSTEMS = {ICD10_SYSTEM}
+
+# The upstream CIE-10 file drops most diacritics ("Hipertension", "Colera").
+# This curated map restores them; it is generated from the Spanish hunspell
+# dictionaries plus manual review, and only ever adds accents, never changes
+# letters. Words that are already valid Spanish are absent on purpose, so
+# homographs like "ano" (anus) are never turned into "año".
+ACCENT_FIXES_PATH = os.path.join(
+    os.path.dirname(__file__), "data", "cie10_accent_fixes.json"
+)
+WORD_PATTERN = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+")
+
+
+@lru_cache(maxsize=1)
+def load_accent_fixes() -> dict:
+    if not os.path.exists(ACCENT_FIXES_PATH):
+        return {}
+    with open(ACCENT_FIXES_PATH, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def fix_display(text: str) -> str:
+    """Restore the missing Spanish accents of an upstream CIE-10 display."""
+
+    fixes = load_accent_fixes()
+
+    def replace(match):
+        word = match.group(0)
+        if word.isupper():
+            return word
+        fixed = fixes.get(word.lower())
+        if not fixed:
+            return word
+        return fixed[0].upper() + fixed[1:] if word[0].isupper() else fixed
+
+    return WORD_PATTERN.sub(replace, text or "")
 
 
 def is_local_system(system: str) -> bool:

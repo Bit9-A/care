@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from care.emr.models.icd10 import ICD10Code, fold_text
+from care.emr.terminologies import fix_display
 
 DEFAULT_DATA_FILE = Path(__file__).resolve().parents[2] / "data" / "cie10-array.json"
 
@@ -38,15 +39,17 @@ class Command(BaseCommand):
         if options["truncate"]:
             ICD10Code.objects.all().delete()
 
-        codes = [
-            ICD10Code(
-                code=record["c"],
-                display=record["d"],
-                search_text=fold_text(record["d"]),
-                is_group=len(record["c"]) <= 3,
+        codes = []
+        for record in records:
+            display = fix_display(record["d"])
+            codes.append(
+                ICD10Code(
+                    code=record["c"],
+                    display=display,
+                    search_text=fold_text(display),
+                    is_group=len(record["c"]) <= 3,
+                )
             )
-            for record in records
-        ]
         with transaction.atomic():
             ICD10Code.objects.bulk_create(
                 codes, batch_size=2000, ignore_conflicts=True
