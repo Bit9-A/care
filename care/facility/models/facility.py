@@ -61,7 +61,7 @@ FACILITY_TYPES = [
     (1300, "Hospital Gineco-Obstétrico"),
     (1400, "Hospital Mental"),
     (1500, "Centro de Rehabilitación Integral (CRI)"),
-    (1510, "Policlílico"),
+    (1510, "Policlínico"),
     (1600, "Hospital Militar"),
     # Use 3xxx/4xxx for non-governmental and community organisations
     (3000, "Organización No Gubernamental Clínica"),
