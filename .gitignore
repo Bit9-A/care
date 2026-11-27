@@ -363,3 +363,6 @@ care_db.dump
 .nix-data
 
 import/
+
+# OpenCode skill packs: absolute symlinks, machine-local
+.opencode/skills/
